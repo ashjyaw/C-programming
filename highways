@@ -1,0 +1,46 @@
+/*
+
+
+
+*/
+
+
+#include <stdio.h>
+
+int main(void) {
+   int highwayNumber;
+   int highwayModelo;
+   int auxconnect;
+   
+  
+   
+   scanf("%d", &highwayNumber); 
+   highwayModelo = highwayNumber%2;
+   auxconnect = highwayNumber%100;
+   
+   if(highwayNumber > 0 && highwayNumber < 999)
+   {
+      if((highwayNumber < 99) && (highwayModelo == 0))
+      {
+         printf("I-%d is primary, going east/west.\n",   highwayNumber);
+      }
+      else if(highwayNumber < 99)
+      {
+         printf("I-%d is primary, going north/south.\n", highwayNumber);
+      }
+      else if(highwayNumber > 99 && (auxconnect%2) == 0)
+      {
+         printf("I-%d is auxiliary, serving I-%d, going east/west.\n",highwayNumber,auxconnect);  
+      }
+      else
+      {
+         printf("I-%d is auxiliary, serving I-%d, going north/south.\n",highwayNumber,auxconnect);  
+      }
+   }
+   else
+   {
+      printf("%d is not a valid interstate highway number.\n", highwayNumber);  
+   }
+
+   return 0;
+}
