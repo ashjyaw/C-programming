@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <string.h>
+
+int priceAction(char str[]);//declaring my function
+
+int main(void) //starts program
+{
+   int totalPrice = 0;
+   char str[15];
+   char str2[15];
+   int price1, price2;
+
+   printf("Davy's auto shop services\n");
+   printf("Oil change -- $35\n");
+   printf("Tire rotation -- $19\n");
+   printf("Car wash -- $7\n");
+   printf("Car wax -- $12\n\n");
+   printf("Select first service:\n");
+   scanf("%[^\n]%*c", str); //won't lie found out how to do this one on stack overflow so itll do both words
+   price1 = priceAction(str); //cool function i made
+   totalPrice += price1; //+= means totalPrice = totalPrice + price1
+   printf("Select second service:\n\n");
+   scanf("%[^\n]%*c", str2); //again to read both words
+   price2 = priceAction(str2); // calling my function
+   totalPrice += price2;// again +=
+  
+   //Printing the invoice
+   if(strcmp(str,"-") == 0)
+   {
+      printf("Davy's auto shop invoice\n\n");
+      printf("Service 1: No service\n");           //case for first service selection as -
+      printf("Service 2: %s, $%d\n\n", str2, price2);
+   }
+   else if(strcmp(str2,"-") == 0)                 
+   {
+      printf("Davy's auto shop invoice\n\n");
+      printf("Service 1: %s, $%d\n", str, price1);
+      printf("Service 2: No service\n\n");
+   }
+   else
+   {
+      printf("Davy's auto shop invoice\n\n");
+      printf("Service 1: %s, $%d\n", str, price1); 
+      printf("Service 2: %s, $%d\n\n", str2, price2);
+   }
+  
+   printf("Total: $%d\n", totalPrice); // finally the total price
+   
+   
+   return 0;
+}
+int priceAction(char str[]) //I know using this method is a bit ahead but I've taken other programming classes
+{
+   if(strcmp("Oil change",str)==0) // passes in str for a comparison
+   {
+      return 35; //return 35 to the variable that called it
+   }
+   else if(strcmp("Tire rotation",str)==0)
+   {
+   return 19;
+   }
+   else if(strcmp("Car wash",str)==0)
+   {
+   return 7;
+   }  
+   else if(strcmp("Car wax",str)==0)
+   {
+      return 12;
+   }
+   else if(strcmp("-",str)==0)
+   {
+   return 0;
+   }
+}
